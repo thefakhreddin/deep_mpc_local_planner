@@ -1,0 +1,7 @@
+<library path="lib/libdeep_mpc_local_planner">
+	<class name="deep_mpc_local_planner/DeepMPCPlannerROS" type="deep_mpc_local_planner::DeepMPCPlannerROS" base_class_type="nav_core::BaseLocalPlanner">
+		<description>
+        data driven deep mpc local planner
+		</description>
+	</class>
+</library>
