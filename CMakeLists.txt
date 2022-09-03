@@ -132,6 +132,7 @@ include_directories(
 
 ## Declare a C++ library
 add_library(deep_mpc_local_planner
+src/deep_mpc_planner_ros.cpp
 src/deep_mpc_planner.cpp
 )
 
