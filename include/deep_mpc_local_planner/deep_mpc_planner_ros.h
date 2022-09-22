@@ -26,11 +26,16 @@ namespace deep_mpc_local_planner
                         costmap_2d::Costmap2DROS *costmap_ros);
 
         bool computeVelocityCommands(geometry_msgs::Twist &cmd_vel);
+        bool deepComputeVelocityCommands(geometry_msgs::PoseStamped &global_pose, geometry_msgs::Twist &cmd_vel);
 
         bool setPlan(const std::vector<geometry_msgs::PoseStamped> &orig_global_plan);
         bool isGoalReached();
 
     private:
+        void publishLocalPlan(std::vector<geometry_msgs::PoseStamped> &path);
+        void publishGlobalPlan(std::vector<geometry_msgs::PoseStamped> &path);
+        bool setup_;
+        ros::Publisher g_plan_pub_, l_plan_pub_;
         tf2_ros::Buffer *tf_;
         costmap_2d::Costmap2DROS *costmap_ros;
         bool initialized_;
@@ -41,7 +46,7 @@ namespace deep_mpc_local_planner
         base_local_planner::LatchedStopRotateController latchedStopRotateController_;
         base_local_planner::OdometryHelperRos odom_helper_;
         std::string _robot_base_frame;
-        // boost::shared_ptr<DeepMPCPlanner> dp_;
+        boost::shared_ptr<DeepMPCPlanner> dp_;
         std::vector<geometry_msgs::PoseStamped> _global_plan;
     };
 
